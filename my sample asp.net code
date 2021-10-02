@@ -1,0 +1,86 @@
+<!-- directives -->
+<% @Page Language="C#" %>
+
+<!-- code section -->
+<script runat="server">
+
+   private void convertoupper(object sender, EventArgs e)
+   {
+      string str = mytext.Value;
+      changed_text.InnerHtml = str.ToUpper();
+   }
+</script>
+
+<!-- Layout -->
+<html>
+   <head> 
+      <title> Change to Upper Case </title> 
+   </head>
+   
+   <body>
+      <h3> Conversion to Upper Case </h3>
+      
+      <form runat="server">
+         <input runat="server" id="mytext" type="text" />
+         <input runat="server" id="button1" type="submit" value="Enter..." OnServerClick="convertoupper"/>
+         
+         <hr />
+         <h3> Results: </h3>
+         <span runat="server" id="changed_text" />
+      </form>
+      
+   </body>
+   
+</html>
+Copy this file to the web server root directory. Generally it is c:\iNETput\wwwroot. Open the file from the browser to execute it and it generates following result:
+
+ASP.NET First ExampleASP.NET First Example
+Using Visual Studio IDE
+Let us develop the same example using Visual Studio IDE. Instead of typing the code, you can just drag the controls into the design view:
+
+ASP.NET First Example 2
+The content file is automatically developed. All you need to add is the Button1_Click routine, which is as follows:
+
+protected void Button1_Click(object sender, EventArgs e)
+{
+   string buf = TextBox1.Text;
+   changed_text.InnerHtml = buf.ToUpper();
+}
+The content file code is as given:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" 
+   Inherits="firstexample._Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+   <head runat="server">
+      <title>
+         Untitled Page
+      </title>
+   </head>
+   
+   <body>
+   
+      <form id="form1" runat="server">
+         <div>
+         
+            <asp:TextBox ID="TextBox1" runat="server" style="width:224px">
+            </asp:TextBox>
+            
+            <br />
+            <br />
+            
+            <asp:Button ID="Button1" runat="server" Text="Enter..." style="width:85px" onclick="Button1_Click" />
+            <hr />
+            
+            <h3> Results: </h3>
+            <span runat="server" id="changed_text" />
+            
+         </div>
+      </form>
+      
+   </body>
+   
+</html>
